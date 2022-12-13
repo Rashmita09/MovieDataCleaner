@@ -7,6 +7,8 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+## Rationale
+
 MovieDataCleaner is a package used to clean datasets, especially ones with large amounts of missing data. Missing data can often be an issue in larger datasets and can be found in almost any area of interest, not just movies, therefore dealing with missing data is a problem that one is likely to encounter. This package is best suited for Movie datasets from MovieLens but can be used on any dataset. This package is able to impute missing values into a dataset using either kNN or NMF. If you wish to cluster your final dataset this packages also has the capability to do that using kmeans clustering.
 
 ```{r, include = FALSE}
@@ -16,7 +18,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-## Load package and dataset
+<h3> Load package and dataset <h3>
 
 Here we load our package and dataset from MovieLens which contains lots of missing values. We also remove the first column which is a column for userIds.
 
@@ -82,6 +84,7 @@ Here our final dataset now allows us to see how movies were separated into clust
 First we will use the `run_nmf_imputation` function on our new dataset.
 
 ```{r message=FALSE}
+library(RcppML)
 nmf_imputed <- run_nmf_imputation(3, new_data)
 head(nmf_imputed, c(5, 5))
 ```
@@ -119,9 +122,24 @@ head(nmf_clustered_data, c(5, 3))
 Here we once again have a final dataset that allows us to see how movies were separated into clusters.
 
 
+## Achievements in Project 
+
+Team was able to achieve the outcome with proposed Aim in given timeline using Knn functionality for imputing missing data, reducing errors with nulls also improving the efficiency with less missing values to the user in the end and also performed NMF functionality for the better dimension reduction approach and successfully conducted clustering techniques on that data.    
+
+## Significance
+
+This project would help to serve as a template for how to deal with large datasets with lots of missing data using k nearest neighbors and or machine learning algorithms. Missing data can be found in almost any area of interest, not just movies, therefore dealing with missing data is a problem that one is likely to encounter
+
+## Real Life Example </h2> 
+
+Movielens is a recommender-system that recommends movies based on users film preferences. In this package vignette, we used Movielens dataset to implement both aims and were successful. Therefore, this proves that the package works for any dataset in real life.
+
+
+
 ## References
 
 1. https://debruine.github.io/tutorials/packages.html
 2. https://r-pkgs.org/
 3. https://stackoverflow.com/questions/31848156/delete-columns-rows-with-more-than-x-missing
+4. towardsdatascience.com
 
